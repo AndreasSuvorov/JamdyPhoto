@@ -3,7 +3,7 @@
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm m-0 p-0">
         <div class="container">
 
-            @if(Auth::user() && Auth::user()->isAdminOfAlbum($album))
+
                 <ul class="navbar-nav ">
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('album') }}">{{ __('Medien verwalten') }}</a>
@@ -18,7 +18,6 @@
                             Tagen</a>
                     </li>
                 </ul>
-            @endif
 
                 <ul class="navbar-nav flex-row justify-content-center w-100">
                     <li class="nav-item">
