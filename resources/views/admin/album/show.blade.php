@@ -41,7 +41,7 @@
     <section
 
         class="hero-image"
-        style="background-image: url('{{$album->cover()}}');"
+        style="background-image: url('{{$album->cover()}}'); @if($album->isDefaultImage()) background-size: cover; @endif"
 
     >
         <div class="container pt-3">

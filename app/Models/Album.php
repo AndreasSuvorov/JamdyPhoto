@@ -39,13 +39,22 @@ class Album extends Model
 
     public function cover(): string
     {
-
         if ($this->media->count() > 0) {
             return $this->media->random()->getUrl();
 
         } else {
             return asset('images/party.jpg');
         }
+    }
+
+    public function isDefaultImage(): bool
+    {
+        if ($this->media->count() > 0) {
+            return false;
+
+        }
+
+        return true;
     }
 
 
