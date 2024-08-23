@@ -20,10 +20,12 @@
     column-count: 3;
     column-gap: 1em;
 }
+
 .masonry-item {
     break-inside: avoid;
     margin-bottom: 1em;
 }
+
 .masonry-item img {
     width: 100%;
     height: auto;
@@ -39,6 +41,7 @@
 
 @media screen and (max-width: 768px) {
     .hero-image {
-        background-size: cover
+        background-size: cover;
+        background-position-y: unset !important;
     }
 }

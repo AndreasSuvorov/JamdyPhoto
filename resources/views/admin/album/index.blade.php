@@ -31,15 +31,13 @@
 
         @foreach($albums as $album)
             <div class="col-md-4">
-                <div class="card" style="height: 250px; background-image: linear-gradient(0deg, rgba(98,96,96,0.68), rgba(0,0,0,0.73)), url('{{$album->cover()}}'); background-size: contain">
+                <div class="card" style="height: 250px;
+                 background-image: linear-gradient(0deg, rgba(98,96,96,0.68), rgba(0,0,0,0.73)), url('{{$album->cover()}}'); background-size: cover;
+                 background-repeat: no-repeat">
 
                     <div class="card-body d-flex flex-column justify-content-center align-items-center">
-                        <h5 class="card-title
-                            @if($album->is_premium)
-                                text-danger
-                            @endif
-                            ">{{ $album->name }}</h5>
-                        <p class="card-text text-white">{{ $album->description }}</p>
+                        <h5 class="card-title text-white">{{ $album->title }}</h5>
+
                         <a href="{{ route('album.show', $album->uuid) }}" class="btn btn-primary">Anzeigen</a>
                     </div>
                 </div>
