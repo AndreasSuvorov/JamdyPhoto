@@ -1,0 +1,44 @@
+// Fonts
+@import url('https://fonts.bunny.net/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import 'bootstrap/scss/bootstrap';
+
+.nav-item {
+    padding: 0 5px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+
+.masonry {
+    column-count: 3;
+    column-gap: 1em;
+}
+.masonry-item {
+    break-inside: avoid;
+    margin-bottom: 1em;
+}
+.masonry-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+.hero-image {
+    background-position-y: -300px;
+    padding: 75px 0;
+    background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 768px) {
+    .hero-image {
+        background-size: cover
+    }
+}
