@@ -1,4 +1,4 @@
 [phases.setup]
 commands = [
-  "cp /app/custom-php.ini /etc/php.ini"
+  "cp custom-php.ini /etc/php.ini"
 ]
