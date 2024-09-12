@@ -29,8 +29,15 @@ class Media extends Model
         return $this->belongsTo(Album::class);
     }
 
-    public function getUrl() {
-        return Storage::url($this->filename);
+    public function getUrl($size = 'original') {
+        if($size == 'original') {
+            return Storage::url($this->filename);
+        } else {
+            $path = pathinfo($this->filename);
+            $filename = $path['filename'] . '_' . $size . '.' . $path['extension'];
+            return Storage::url($path['dirname'] . '/' . $filename);
+        }
+
     }
 
 }

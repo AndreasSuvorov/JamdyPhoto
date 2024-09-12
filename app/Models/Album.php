@@ -33,7 +33,7 @@ class Album extends Model
 
     public function media()
     {
-        return $this->hasMany(Media::class);
+        return $this->hasMany(Media::class)->inRandomOrder();
     }
 
 

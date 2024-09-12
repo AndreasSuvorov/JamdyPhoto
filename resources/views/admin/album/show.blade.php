@@ -83,7 +83,7 @@
                     @foreach($album->media as $media)
                         <div class="masonry-item">
                             <a href="{{$media->getUrl()}}" data-fancybox="gallery">
-                                <img src="{{$media->getUrl()}}" style="width: 100%;"/>
+                                <img src="{{$media->getUrl(800)}}" style="width: 100%;"/>
                             </a>
                         </div>
                     @endforeach

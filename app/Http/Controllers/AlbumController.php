@@ -6,7 +6,9 @@ use App\Models\Album;
 use App\Models\Media;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 class AlbumController extends Controller
 {
     public function admin()
@@ -104,16 +106,18 @@ class AlbumController extends Controller
 
     public function uploadMedia(Request $request, $id)
     {
+
         $request->validate([
-            'media.*' => 'required|file|mimes:jpeg,png,jpg,gif,mp4,mov,avi,flv|max:20480',
+            'media.*' => 'required|file|mimes:jpeg,png,jpg,gif,mp4,mov,avi,flv',
         ]);
+
 
         $album = Album::findOrFail($id);
         $files = $request->file('media');
 
         foreach ($files as $file) {
             $path = $file->store('media', 'public');
-
+            $this->resizeImages($file, pathinfo($path, PATHINFO_FILENAME), pathinfo($path, PATHINFO_EXTENSION));
             $media = new Media();
             $media->album_id = $album->id;
             $media->filename = $path;
@@ -123,6 +127,22 @@ class AlbumController extends Controller
         }
 
         return response()->json(['success' => true]);
+    }
+
+    private function resizeImages(UploadedFile $file, $name, $extension): void
+    {
+        $default_variants = [
+            800,
+            400,
+        ];
+
+        foreach ($default_variants as $default_variant) {
+            $img = Image::make($file);
+            $imageToSave = $img->resize($default_variant, $default_variant, function ($const) {
+                $const->aspectRatio();
+            });
+            Storage::disk('public')->put('media/'. $name . '_' . $default_variant . '.' . $extension, (string)$imageToSave->encode());
+        }
     }
 
     public function downloadMedia($id)

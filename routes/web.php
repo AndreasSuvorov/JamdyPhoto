@@ -13,7 +13,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Route::middleware('auth')->group(function () {
+Route::middleware('auth')->prefix('admin')->group(function () {
     Route::controller(\App\Http\Controllers\AlbumController::class)->group(function () {
         Route::get('/album', 'admin')->name('album');
         Route::get('/album/edit/{id?}', 'edit')->name('album.edit');
