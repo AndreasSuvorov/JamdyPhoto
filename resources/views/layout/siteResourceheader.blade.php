@@ -17,9 +17,9 @@
     />
 </head>
 <body class="skin">
-<script src="{{ asset('js/core/popper.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('js/app.js') }}"></script>
-<script src="{{ asset('js/functions.js') }}"></script>
+<script src="{{ secure_asset('js/core/popper.min.js') }}" type="text/javascript"></script>
+<script src="{{ secure_asset('js/app.js') }}"></script>
+<script src="{{ secure_asset('js/functions.js') }}"></script>
 <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
 
 
