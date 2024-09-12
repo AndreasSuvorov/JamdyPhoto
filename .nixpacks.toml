@@ -1,23 +1,6 @@
-# Nixpacks Konfiguration für eine Laravel-Anwendung mit benutzerdefinierten PHP-Einstellungen
-
-[phases.setup]
-commands = [
-  # Kopiere die benutzerdefinierte php.ini in den PHP-Konfigurationspfad
-  "cp /app/custom-php.ini /etc/php.d/custom-php.ini"
-]
-
 [phases.build]
-commands = [
-  # Füge hier spezifische Build-Kommandos hinzu, falls erforderlich
-  "echo 'Building the application...'"
+# Customize the PHP configuration
+cmds = ['...',
+    "echo \"<<<<<<<<<<<<< CHANGING THE PHP INI >>>>>>>>>>>>>>\"" ,
+    "PHP_INI_PATH=$(php -i | grep '/php.ini' | awk '{print $6}') && echo -e '\nupload_max_filesize = 10M\npost_max_size = 10M' >> $PHP_INI_PATH",
 ]
-
-[phases.start]
-commands = [
-  # Starte den PHP-Server (z.B. PHP-FPM oder den Webserver)
-  "echo 'Starting the application...'"
-]
-
-# Definiere den Speicherort der benutzerdefinierten php.ini-Datei
-[environment]
-PHP_INI_SCAN_DIR = "/app:/nix/store/rzcijhxwxbld02mpvx288nf6bzv7ybhz-php-with-extensions-8.2.10/lib"
