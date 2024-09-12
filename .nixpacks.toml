@@ -1,6 +1,6 @@
-[phases.build]
-# Customize the PHP configuration
-cmds = ['...',
-    "echo \"<<<<<<<<<<<<< CHANGING THE PHP INI >>>>>>>>>>>>>>\"" ,
-    "PHP_INI_PATH=$(php -i | grep '/php.ini' | awk '{print $6}') && echo -e '\nupload_max_filesize = 10M\npost_max_size = 10M' >> $PHP_INI_PATH",
-]
+[variables]
+UPLOAD_MAX_FILESIZE = '1024M'
+POST_MAX_SIZE = '1024M'
+
+[phases.setup]
+cmds = ['UPLOAD_INI_PATH=$(find /nix/store/*-php-*/lib -name php.ini | rev | cut -c 9- | rev)/upload.ini; echo "upload_max_filesize=${UPLOAD_MAX_FILESIZE};" >> $UPLOAD_INI_PATH; echo "post_max_size=${POST_MAX_SIZE};" >> $UPLOAD_INI_PATH']
