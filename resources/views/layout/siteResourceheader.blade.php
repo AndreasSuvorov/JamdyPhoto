@@ -6,10 +6,10 @@
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
     <meta name="robots" content="noindex,nofollow">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('images/apple-icon.png') }}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{{ secure_asset('images/apple-icon.png') }}">
     <title>{{ \App\Http\Controllers\LayoutController::getSiteTitle() }}</title>
     <link rel="shortcut icon" href="{{ \App\Http\Controllers\LayoutController::getFavicon() }}">
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ secure_asset('css/app.css') }}">
     @stack('css')
     <link
         rel="stylesheet"
