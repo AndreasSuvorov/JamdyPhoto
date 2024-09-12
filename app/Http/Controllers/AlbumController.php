@@ -108,7 +108,7 @@ class AlbumController extends Controller
     {
 
         $request->validate([
-            'media.*' => 'required|file|mimes:jpeg,png,jpg,gif,mp4,mov,avi,flv',
+            'media.*' => 'required|file|mimes:jpeg,png,jpg,gif,mp4,mov,avi,flv,heic,heif,webm,wmv,mpg,mpeg,mp3,wav,ogg,flac,3gp,3g2,amr,webp,svg|max:204800',
         ]);
 
 
