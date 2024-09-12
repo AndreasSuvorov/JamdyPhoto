@@ -1,4 +1,23 @@
+# Nixpacks Konfiguration für eine Laravel-Anwendung mit benutzerdefinierten PHP-Einstellungen
+
 [phases.setup]
 commands = [
-  "cp /app/custom-php.ini /etc/php.ini"
+  # Kopiere die benutzerdefinierte php.ini in den PHP-Konfigurationspfad
+  "cp /app/custom-php.ini /etc/php.d/custom-php.ini"
 ]
+
+[phases.build]
+commands = [
+  # Füge hier spezifische Build-Kommandos hinzu, falls erforderlich
+  "echo 'Building the application...'"
+]
+
+[phases.start]
+commands = [
+  # Starte den PHP-Server (z.B. PHP-FPM oder den Webserver)
+  "echo 'Starting the application...'"
+]
+
+# Definiere den Speicherort der benutzerdefinierten php.ini-Datei
+[environment]
+PHP_INI_SCAN_DIR = "/app:/nix/store/rzcijhxwxbld02mpvx288nf6bzv7ybhz-php-with-extensions-8.2.10/lib"
