@@ -1,5 +1,4 @@
 [phases.setup]
 commands = [
-  "echo 'upload_max_filesize = 100M' >> /etc/php.ini",
-  "echo 'post_max_size = 100M' >> /etc/php.ini"
+  "cp /app/custom-php.ini /etc/php.ini"
 ]
